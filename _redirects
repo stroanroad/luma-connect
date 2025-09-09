@@ -1,0 +1,3 @@
+cat << 'EOF' > _redirects
+/*    /index.html   200
+EOF

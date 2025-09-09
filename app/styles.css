@@ -1,0 +1,59 @@
+:root {
+  --brand-1:#7c5cff; --brand-2:#9a8cff; --brand-3:#6a8dff; --brand-contrast:#fff;
+  --bg:#0b0b0d; --card:#121216; --fg:#ffffff; --muted:#98a2b3; --border:#23232a;
+  --glow-a:rgba(124,92,255,.6); --glow-b:rgba(124,92,255,.4); --glow-c:rgba(124,92,255,.2);
+  --shadow-card:0 0 0 transparent;
+}
+:root[data-theme="light"]{
+  --bg:#f7f7fb; --card:#ffffff; --fg:#0c0d12; --muted:#5f6b7a; --border:#e8e9f3;
+  --glow-a:rgba(124,92,255,.35); --glow-b:rgba(124,92,255,.25); --glow-c:rgba(124,92,255,.12);
+  --shadow-card:0 8px 24px rgba(12,13,18,.06);
+}
+@media (prefers-color-scheme: light){
+  :root[data-theme="auto"]{
+    --bg:#f7f7fb; --card:#ffffff; --fg:#0c0d12; --muted:#5f6b7a; --border:#e8e9f3;
+    --glow-a:rgba(124,92,255,.35); --glow-b:rgba(124,92,255,.25); --glow-c:rgba(124,92,255,.12);
+    --shadow-card:0 8px 24px rgba(12,13,18,.06);
+  }
+}
+
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:var(--brand-1)} a:hover{text-decoration:underline}
+.muted{color:var(--muted)} .row{display:flex;gap:.6rem;align-items:center}
+
+/* Layout */
+.topbar{height:64px;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--bg)}
+.brand{display:flex;align-items:center;gap:.75rem;font-weight:800;letter-spacing:.2px}
+.logo-badge{--size:40px;width:var(--size);height:var(--size);border-radius:12px;overflow:hidden;isolation:isolate;
+  background:radial-gradient(circle at 30% 30%,var(--brand-1),var(--brand-2),var(--brand-3),var(--brand-1));
+  animation:glowBreath 6s ease-in-out infinite;
+  box-shadow:0 0 16px var(--glow-a),0 0 36px var(--glow-b),0 0 56px var(--glow-c)}
+.pulse-mark{width:100%;height:100%;display:block;mix-blend-mode:screen;filter:drop-shadow(0 0 5px rgba(255,255,255,.85))}
+.pulse-mark path{stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:6 8;animation:dash 2.2s ease-in-out infinite}
+
+.app-shell{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 64px)}
+.sidebar{border-right:1px solid var(--border);background:var(--card);padding:1rem;position:sticky;top:64px;height:calc(100vh - 64px)}
+.nav-link{display:block;padding:.7rem .8rem;border-radius:10px;color:var(--fg)}
+.nav-link:hover{background:rgba(124,92,255,.08)}
+.nav-link.active{background:rgba(124,92,255,.12);color:var(--brand-1)}
+
+.content{padding:1.25rem}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:1rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1rem;box-shadow:var(--shadow-card)}
+
+/* Forms & Buttons */
+input,textarea{width:100%;background:var(--card);border:1px solid var(--border);color:var(--fg);padding:.7rem .8rem;border-radius:10px}
+label{display:grid;gap:.35rem;margin:.6rem 0}
+button{background:var(--brand-1);color:#fff;border:0;padding:.8rem 1rem;border-radius:12px;cursor:pointer;font-weight:700;
+  transition:transform .12s ease,filter .12s ease,box-shadow .3s ease;box-shadow:0 0 10px var(--glow-a)}
+button:hover{filter:brightness(1.08);transform:translateY(-1px) scale(1.02);box-shadow:0 0 18px var(--glow-b)}
+button.ghost{background:transparent;color:var(--fg);border:1px solid var(--border);box-shadow:none}
+button.ghost:hover{border-color:var(--brand-1)}
+.theme-toggle{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem .8rem;border-radius:12px;background:var(--card);color:var(--fg);border:1px solid var(--border)}
+.theme-toggle.small{padding:.45rem .6rem}
+
+/* Animations */
+@keyframes dash{0%{stroke-dashoffset:0;opacity:.9}50%{stroke-dashoffset:28;opacity:1}100%{stroke-dashoffset:56;opacity:.9}}
+@keyframes glowBreath{0%,100%{transform:scale(1);box-shadow:0 0 16px var(--glow-a),0 0 36px var(--glow-b),0 0 56px var(--glow-c)}50%{transform:scale(1.04);box-shadow:0 0 28px var(--glow-a),0 0 56px var(--glow-b),0 0 84px var(--glow-c)}}
+@media (prefers-reduced-motion: reduce){.logo-badge,.pulse-mark path{animation:none !important}}
