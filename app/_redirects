@@ -1,2 +1,0 @@
-http://luma-connect.app/*     https://luma-connect.app/:splat 301!
-http://www.luma-connect.app/* https://luma-connect.app/:splat 301!
