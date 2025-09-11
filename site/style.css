@@ -1,0 +1,9 @@
+
+:root{
+  --bg:#0b0b0d; --fg:#fff; --muted:#98a2b3; --border:#23232a;
+  --brand-1:#7c5cff; --brand-contrast:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sa
